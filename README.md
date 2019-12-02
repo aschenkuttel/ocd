@@ -13,3 +13,8 @@ Backup at least, dont't trust me.
 
 # Quick Example
 `python ocd.py <path to .py file or folder>`
+
+#### Before
+![Before](before.png)
+#### After
+![After](after.png)
