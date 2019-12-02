@@ -20,14 +20,16 @@ def main():
                 clean_up(path)
             except Exception as error:
                 print(f"something unexpected happened\n{error}")
+            else:
+                print("file succesfully cleaned")
 
     elif isdir(path):
         succeeded = 0
-        files = listdir(path)
+        tmp = listdir(path)
+        files = [f for f in tmp if f.endswith('.py')]
 
         for file in files:
             tmp_path = f"{path}\\{file}"
-
             try:
                 clean_up(tmp_path)
                 succeeded += 1
@@ -38,7 +40,7 @@ def main():
         print(f"script cleaned {succeeded}/{len(files)} files")
 
     else:
-        print("invalid path")
+        print("invalid path mate")
         return
 
 
@@ -68,8 +70,6 @@ def clean_up(path):
         else:
             if till is None:
                 till = index
-
-    print(till)
 
     if till == 0:
         print("no imports at all, lol")
@@ -102,8 +102,6 @@ def clean_up(path):
 
     with open(path, 'w') as file:
         file.write(result)
-
-    print("file succesfully cleaned")
 
 
 if __name__ == "__main__":
